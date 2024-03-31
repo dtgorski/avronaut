@@ -1,0 +1,99 @@
+@name-space-$({"x": "y"})
+@namespace("foo.bar")
+protocol ProtocolName {
+
+	fixed x(42);
+
+	@`fixed`({"s":"-","n":42,"b":true,"a":[1,2,3],"o":{"k":"v"},"u":null})
+	fixed _(42);
+
+	@annotated(1)
+	error Error {
+		string message = "";
+	}
+
+	@annotated(2)
+	record PrimitiveTypes {
+
+		@property(1)
+		boolean @property(2) trueOrFalse = true;
+
+		@property(3)
+		double moreAccurateNumber = 3.141592653589793;
+
+		@property(4)
+		float inaccurateNumber = 3.14159;
+
+		@property(5)
+		int smallInteger = 42;
+
+		@property(6)
+		long largeInteger = 4398046511104;
+
+		@property(7)
+		bytes byteArray = "fortytwo";
+
+		@property(8)
+		string text = "fortytwo";
+
+		@property(9)
+		null alwaysNull = null;
+
+		FooType? @x("baz") baz, @y("faz-1") @z("faz-2") faz = null;
+	}
+
+	record FooType {}
+
+	@annotated(3)
+	record LogicalTypes {
+		decimal(6,2) accurateNumber;
+		uuid identifier;
+		date created;
+		time_ms timeInMilliseconds;
+		timestamp_ms timestampInMilliseconds;
+		local_timestamp_ms timestamp;
+		@logicalType("time-micros")
+		long otherTimeInMicroseconds;
+		@logicalType("decimal")
+		@precision(6)
+		@scale(2)
+		bytes `string`;
+	}
+
+	@annotated(4)
+	record ComplexTypes {
+		array<string> listOfStrings = [];
+		map<int> mapOfStringToInt = {};
+		union{string, date, boolean} dateDescription = "tomorrow";
+		union{null, string} defaultsToEmpty = null;
+		union{string, null} defaultsToSomeText = "default value";
+		string? defaultsToEmptyNew = null;
+		string? defaultsToSomeTextNew = "default value";
+		array<int> threeHundredDays = [0, 0, 0, 0, 1, 44, 0, 0, 0];
+		array<FooType> results = [];
+		map<array<string>> namedLists;
+		union{array<int>, map<int>} why;
+		union{@`union`("null") null, FooType} @`union`("name") name = null;
+		union { null, array<FooType> } fooUnion = null;
+		array<FooType> fooArray;
+		array<FooType?> nullFooArray;
+	}
+
+	@annotated(5)
+	@other(6)
+	enum Enumeration { A, B, C } = C;
+
+	error FooError {}
+
+	void `error`() throws FooError, Error;
+
+	void ping() oneway;
+
+	string hello(string greeting);
+
+	FooType echo(FooType `record`);
+
+	int add(int arg1, int arg2);
+
+	bytes echoBytes(bytes data);
+}

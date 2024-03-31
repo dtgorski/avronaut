@@ -1,0 +1,15 @@
+_*
+.*
+
+*.html
+
+!.github
+!.gitignore
+!.gitattributes
+
+bin/
+dev/
+vendor/
+tests/reports/
+
+makefile

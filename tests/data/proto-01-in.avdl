@@ -1,0 +1,51 @@
+/**
+ * An example protocol in Avro IDL. DO NOT MODIFY, requires to be byte identical for tests.
+ * Taken from: <https://avro.apache.org/docs/1.11.1/idl-language/>
+ */
+@namespace("org.apache.avro.test")
+protocol Simple {
+	/** Documentation for the enum type Kind */
+	@aliases(["org.foo.KindOf"])
+	enum Kind {
+		FOO,
+		BAR, // the bar enum value
+		BAZ
+	} = FOO; // For schema evolution purposes, unmatched values do not throw an error, but are resolved to FOO.
+
+	/** MD5 hash; good enough to avoid most collisions, and smaller than (for example) SHA256. */
+	fixed MD5(16);
+
+	record TestRecord {
+		/** Record name; has no intrinsic order */
+		string @order("ignore") name;
+
+		Kind @order("descending") kind;
+
+		MD5 hash;
+
+		/* Note that 'null' is the first union type. Just like .avsc / .avpr files, the default value
+		   must be of the first union type. */
+		union { null, MD5 } /** Optional field */ @aliases(["hash"]) nullableHash = null;
+
+		array<long> arrayOfLongs;
+	}
+
+	/** Errors are records that can be thrown from a method */
+	error TestError {
+		string message;
+	}
+
+	string hello(string greeting);
+
+	/** Return what was given. Demonstrates the use of backticks to name types/fields/messages/parameters after keywords */
+	TestRecord echo(TestRecord `record`);
+
+	int add(int arg1, int arg2);
+
+	bytes echoBytes(bytes data);
+
+	void `error`() throws TestError;
+
+	// The oneway keyword forces the method to return null.
+	void ping() oneway;
+}

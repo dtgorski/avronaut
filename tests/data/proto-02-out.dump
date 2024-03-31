@@ -1,0 +1,277 @@
+ProtocolDeclarationNode                                 : @namespace("foo.bar") @[{"name-space-$":{"x":"y"}}] ProtocolName
+    ├── FixedDeclarationNode                            : @namespace("foo.bar")
+    ├── FixedDeclarationNode                            : @namespace("foo.bar") @[{"fixed":{"s":"-","n":42,"b":true,"a":[1,2,3],"o":{"k":"v"},"u":null}}]
+    ├── ErrorDeclarationNode                            : @namespace("foo.bar") @[{"annotated":1}]
+    │   └── FieldDeclarationNode                        :
+    │       ├── TypeNode                                :
+    │       │   └── PrimitiveTypeNode                   : string
+    │       └── VariableDeclaratorNode                  : message
+    │           └── JsonValueNode                       : ""
+    ├── RecordDeclarationNode                           : @namespace("foo.bar") @[{"annotated":2}] PrimitiveTypes
+    │   ├── FieldDeclarationNode                        :
+    │   │   ├── TypeNode                                :
+    │   │   │   └── PrimitiveTypeNode                   : @[{"property":1}] boolean
+    │   │   └── VariableDeclaratorNode                  : @[{"property":2}] trueOrFalse
+    │   │       └── JsonValueNode                       : true
+    │   ├── FieldDeclarationNode                        :
+    │   │   ├── TypeNode                                :
+    │   │   │   └── PrimitiveTypeNode                   : @[{"property":3}] double
+    │   │   └── VariableDeclaratorNode                  : moreAccurateNumber
+    │   │       └── JsonValueNode                       : 3.141592653589793
+    │   ├── FieldDeclarationNode                        :
+    │   │   ├── TypeNode                                :
+    │   │   │   └── PrimitiveTypeNode                   : @[{"property":4}] float
+    │   │   └── VariableDeclaratorNode                  : inaccurateNumber
+    │   │       └── JsonValueNode                       : 3.14159
+    │   ├── FieldDeclarationNode                        :
+    │   │   ├── TypeNode                                :
+    │   │   │   └── PrimitiveTypeNode                   : @[{"property":5}] int
+    │   │   └── VariableDeclaratorNode                  : smallInteger
+    │   │       └── JsonValueNode                       : 42
+    │   ├── FieldDeclarationNode                        :
+    │   │   ├── TypeNode                                :
+    │   │   │   └── PrimitiveTypeNode                   : @[{"property":6}] long
+    │   │   └── VariableDeclaratorNode                  : largeInteger
+    │   │       └── JsonValueNode                       : 4398046511104
+    │   ├── FieldDeclarationNode                        :
+    │   │   ├── TypeNode                                :
+    │   │   │   └── PrimitiveTypeNode                   : @[{"property":7}] bytes
+    │   │   └── VariableDeclaratorNode                  : byteArray
+    │   │       └── JsonValueNode                       : "fortytwo"
+    │   ├── FieldDeclarationNode                        :
+    │   │   ├── TypeNode                                :
+    │   │   │   └── PrimitiveTypeNode                   : @[{"property":8}] string
+    │   │   └── VariableDeclaratorNode                  : text
+    │   │       └── JsonValueNode                       : "fortytwo"
+    │   ├── FieldDeclarationNode                        :
+    │   │   ├── TypeNode                                :
+    │   │   │   └── PrimitiveTypeNode                   : @[{"property":9}] null
+    │   │   └── VariableDeclaratorNode                  : alwaysNull
+    │   │       └── JsonValueNode                       : null
+    │   └── FieldDeclarationNode                        :
+    │       ├── TypeNode                                : (nullable)
+    │       │   └── ReferenceTypeNode                   : FooType?
+    │       ├── VariableDeclaratorNode                  : @[{"x":"baz"}] baz
+    │       └── VariableDeclaratorNode                  : @[{"y":"faz-1"},{"z":"faz-2"}] faz
+    │           └── JsonValueNode                       : null
+    ├── RecordDeclarationNode                           : @namespace("foo.bar") FooType
+    ├── RecordDeclarationNode                           : @namespace("foo.bar") @[{"annotated":3}] LogicalTypes
+    │   ├── FieldDeclarationNode                        :
+    │   │   ├── TypeNode                                :
+    │   │   │   └── DecimalTypeNode                     : (6, 2)
+    │   │   └── VariableDeclaratorNode                  : accurateNumber
+    │   ├── FieldDeclarationNode                        :
+    │   │   ├── TypeNode                                :
+    │   │   │   └── LogicalTypeNode                     : uuid
+    │   │   └── VariableDeclaratorNode                  : identifier
+    │   ├── FieldDeclarationNode                        :
+    │   │   ├── TypeNode                                :
+    │   │   │   └── LogicalTypeNode                     : date
+    │   │   └── VariableDeclaratorNode                  : created
+    │   ├── FieldDeclarationNode                        :
+    │   │   ├── TypeNode                                :
+    │   │   │   └── LogicalTypeNode                     : time_ms
+    │   │   └── VariableDeclaratorNode                  : timeInMilliseconds
+    │   ├── FieldDeclarationNode                        :
+    │   │   ├── TypeNode                                :
+    │   │   │   └── LogicalTypeNode                     : timestamp_ms
+    │   │   └── VariableDeclaratorNode                  : timestampInMilliseconds
+    │   ├── FieldDeclarationNode                        :
+    │   │   ├── TypeNode                                :
+    │   │   │   └── LogicalTypeNode                     : local_timestamp_ms
+    │   │   └── VariableDeclaratorNode                  : timestamp
+    │   ├── FieldDeclarationNode                        :
+    │   │   ├── TypeNode                                :
+    │   │   │   └── PrimitiveTypeNode                   : @[{"logicalType":"time-micros"}] long
+    │   │   └── VariableDeclaratorNode                  : otherTimeInMicroseconds
+    │   └── FieldDeclarationNode                        :
+    │       ├── TypeNode                                :
+    │       │   └── PrimitiveTypeNode                   : @[{"logicalType":"decimal"},{"precision":6},{"scale":2}] bytes
+    │       └── VariableDeclaratorNode                  : string
+    ├── RecordDeclarationNode                           : @namespace("foo.bar") @[{"annotated":4}] ComplexTypes
+    │   ├── FieldDeclarationNode                        :
+    │   │   ├── TypeNode                                :
+    │   │   │   └── ArrayTypeNode                       :
+    │   │   │       └── TypeNode                        :
+    │   │   │           └── PrimitiveTypeNode           : string
+    │   │   └── VariableDeclaratorNode                  : listOfStrings
+    │   │       └── JsonArrayNode                       : []
+    │   ├── FieldDeclarationNode                        :
+    │   │   ├── TypeNode                                :
+    │   │   │   └── MapTypeNode                         :
+    │   │   │       └── TypeNode                        :
+    │   │   │           └── PrimitiveTypeNode           : int
+    │   │   └── VariableDeclaratorNode                  : mapOfStringToInt
+    │   │       └── JsonObjectNode                      : {}
+    │   ├── FieldDeclarationNode                        :
+    │   │   ├── TypeNode                                :
+    │   │   │   └── UnionTypeNode                       :
+    │   │   │       ├── TypeNode                        :
+    │   │   │       │   └── PrimitiveTypeNode           : string
+    │   │   │       ├── TypeNode                        :
+    │   │   │       │   └── LogicalTypeNode             : date
+    │   │   │       └── TypeNode                        :
+    │   │   │           └── PrimitiveTypeNode           : boolean
+    │   │   └── VariableDeclaratorNode                  : dateDescription
+    │   │       └── JsonValueNode                       : "tomorrow"
+    │   ├── FieldDeclarationNode                        :
+    │   │   ├── TypeNode                                :
+    │   │   │   └── UnionTypeNode                       :
+    │   │   │       ├── TypeNode                        :
+    │   │   │       │   └── PrimitiveTypeNode           : null
+    │   │   │       └── TypeNode                        :
+    │   │   │           └── PrimitiveTypeNode           : string
+    │   │   └── VariableDeclaratorNode                  : defaultsToEmpty
+    │   │       └── JsonValueNode                       : null
+    │   ├── FieldDeclarationNode                        :
+    │   │   ├── TypeNode                                :
+    │   │   │   └── UnionTypeNode                       :
+    │   │   │       ├── TypeNode                        :
+    │   │   │       │   └── PrimitiveTypeNode           : string
+    │   │   │       └── TypeNode                        :
+    │   │   │           └── PrimitiveTypeNode           : null
+    │   │   └── VariableDeclaratorNode                  : defaultsToSomeText
+    │   │       └── JsonValueNode                       : "default value"
+    │   ├── FieldDeclarationNode                        :
+    │   │   ├── TypeNode                                : (nullable)
+    │   │   │   └── PrimitiveTypeNode                   : string?
+    │   │   └── VariableDeclaratorNode                  : defaultsToEmptyNew
+    │   │       └── JsonValueNode                       : null
+    │   ├── FieldDeclarationNode                        :
+    │   │   ├── TypeNode                                : (nullable)
+    │   │   │   └── PrimitiveTypeNode                   : string?
+    │   │   └── VariableDeclaratorNode                  : defaultsToSomeTextNew
+    │   │       └── JsonValueNode                       : "default value"
+    │   ├── FieldDeclarationNode                        :
+    │   │   ├── TypeNode                                :
+    │   │   │   └── ArrayTypeNode                       :
+    │   │   │       └── TypeNode                        :
+    │   │   │           └── PrimitiveTypeNode           : int
+    │   │   └── VariableDeclaratorNode                  : threeHundredDays
+    │   │       └── JsonArrayNode                       : [0,0,0,0,1,44,0,0,0]
+    │   │           ├── JsonValueNode                   : 0
+    │   │           ├── JsonValueNode                   : 0
+    │   │           ├── JsonValueNode                   : 0
+    │   │           ├── JsonValueNode                   : 0
+    │   │           ├── JsonValueNode                   : 1
+    │   │           ├── JsonValueNode                   : 44
+    │   │           ├── JsonValueNode                   : 0
+    │   │           ├── JsonValueNode                   : 0
+    │   │           └── JsonValueNode                   : 0
+    │   ├── FieldDeclarationNode                        :
+    │   │   ├── TypeNode                                :
+    │   │   │   └── ArrayTypeNode                       :
+    │   │   │       └── TypeNode                        :
+    │   │   │           └── ReferenceTypeNode           : FooType
+    │   │   └── VariableDeclaratorNode                  : results
+    │   │       └── JsonArrayNode                       : []
+    │   ├── FieldDeclarationNode                        :
+    │   │   ├── TypeNode                                :
+    │   │   │   └── MapTypeNode                         :
+    │   │   │       └── TypeNode                        :
+    │   │   │           └── ArrayTypeNode               :
+    │   │   │               └── TypeNode                :
+    │   │   │                   └── PrimitiveTypeNode   : string
+    │   │   └── VariableDeclaratorNode                  : namedLists
+    │   ├── FieldDeclarationNode                        :
+    │   │   ├── TypeNode                                :
+    │   │   │   └── UnionTypeNode                       :
+    │   │   │       ├── TypeNode                        :
+    │   │   │       │   └── ArrayTypeNode               :
+    │   │   │       │       └── TypeNode                :
+    │   │   │       │           └── PrimitiveTypeNode   : int
+    │   │   │       └── TypeNode                        :
+    │   │   │           └── MapTypeNode                 :
+    │   │   │               └── TypeNode                :
+    │   │   │                   └── PrimitiveTypeNode   : int
+    │   │   └── VariableDeclaratorNode                  : why
+    │   ├── FieldDeclarationNode                        :
+    │   │   ├── TypeNode                                :
+    │   │   │   └── UnionTypeNode                       :
+    │   │   │       ├── TypeNode                        :
+    │   │   │       │   └── PrimitiveTypeNode           : @[{"union":"null"}] null
+    │   │   │       └── TypeNode                        :
+    │   │   │           └── ReferenceTypeNode           : FooType
+    │   │   └── VariableDeclaratorNode                  : @[{"union":"name"}] name
+    │   │       └── JsonValueNode                       : null
+    │   ├── FieldDeclarationNode                        :
+    │   │   ├── TypeNode                                :
+    │   │   │   └── UnionTypeNode                       :
+    │   │   │       ├── TypeNode                        :
+    │   │   │       │   └── PrimitiveTypeNode           : null
+    │   │   │       └── TypeNode                        :
+    │   │   │           └── ArrayTypeNode               :
+    │   │   │               └── TypeNode                :
+    │   │   │                   └── ReferenceTypeNode   : FooType
+    │   │   └── VariableDeclaratorNode                  : fooUnion
+    │   │       └── JsonValueNode                       : null
+    │   ├── FieldDeclarationNode                        :
+    │   │   ├── TypeNode                                :
+    │   │   │   └── ArrayTypeNode                       :
+    │   │   │       └── TypeNode                        :
+    │   │   │           └── ReferenceTypeNode           : FooType
+    │   │   └── VariableDeclaratorNode                  : fooArray
+    │   └── FieldDeclarationNode                        :
+    │       ├── TypeNode                                :
+    │       │   └── ArrayTypeNode                       :
+    │       │       └── TypeNode                        : (nullable)
+    │       │           └── ReferenceTypeNode           : FooType?
+    │       └── VariableDeclaratorNode                  : nullFooArray
+    ├── EnumDeclarationNode                             : @namespace("foo.bar") @[{"annotated":5},{"other":6}]
+    │   ├── EnumConstantNode                            :
+    │   ├── EnumConstantNode                            :
+    │   └── EnumConstantNode                            :
+    ├── ErrorDeclarationNode                            : @namespace("foo.bar")
+    ├── MessageDeclarationNode                          : error
+    │   ├── ResultTypeNode                              : void
+    │   ├── FormalParametersNode                        :
+    │   └── ErrorListNode                               :
+    │       ├── TypeNode                                :
+    │       │   └── ReferenceTypeNode                   : FooError
+    │       └── TypeNode                                :
+    │           └── ReferenceTypeNode                   : Error
+    ├── MessageDeclarationNode                          : ping
+    │   ├── ResultTypeNode                              : void
+    │   ├── FormalParametersNode                        :
+    │   └── TypeNode                                    :
+    │       └── OnewayStatementNode                     :
+    ├── MessageDeclarationNode                          : hello
+    │   ├── ResultTypeNode                              :
+    │   │   └── TypeNode                                :
+    │   │       └── PrimitiveTypeNode                   : string
+    │   └── FormalParametersNode                        :
+    │       └── FormalParameterNode                     :
+    │           ├── TypeNode                            :
+    │           │   └── PrimitiveTypeNode               : string
+    │           └── VariableDeclaratorNode              : greeting
+    ├── MessageDeclarationNode                          : echo
+    │   ├── ResultTypeNode                              :
+    │   │   └── TypeNode                                :
+    │   │       └── ReferenceTypeNode                   : FooType
+    │   └── FormalParametersNode                        :
+    │       └── FormalParameterNode                     :
+    │           ├── TypeNode                            :
+    │           │   └── ReferenceTypeNode               : FooType
+    │           └── VariableDeclaratorNode              : record
+    ├── MessageDeclarationNode                          : add
+    │   ├── ResultTypeNode                              :
+    │   │   └── TypeNode                                :
+    │   │       └── PrimitiveTypeNode                   : int
+    │   └── FormalParametersNode                        :
+    │       ├── FormalParameterNode                     :
+    │       │   ├── TypeNode                            :
+    │       │   │   └── PrimitiveTypeNode               : int
+    │       │   └── VariableDeclaratorNode              : arg1
+    │       └── FormalParameterNode                     :
+    │           ├── TypeNode                            :
+    │           │   └── PrimitiveTypeNode               : int
+    │           └── VariableDeclaratorNode              : arg2
+    └── MessageDeclarationNode                          : echoBytes
+        ├── ResultTypeNode                              :
+        │   └── TypeNode                                :
+        │       └── PrimitiveTypeNode                   : bytes
+        └── FormalParametersNode                        :
+            └── FormalParameterNode                     :
+                ├── TypeNode                            :
+                │   └── PrimitiveTypeNode               : bytes
+                └── VariableDeclaratorNode              : data

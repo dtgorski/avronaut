@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ruleset>
+    <description>Avro Coding Rules</description>
+
+    <exclude-pattern>Lexer.php</exclude-pattern>
+
+    <rule ref="PSR12">
+       <exclude name="Squiz.WhiteSpace.ControlStructureSpacing.SpacingBeforeClose"/>
+    </rule>
+</ruleset>
