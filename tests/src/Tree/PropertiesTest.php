@@ -19,10 +19,10 @@ class PropertiesTest extends AvroTestCase
 {
     public function testProperties(): void
     {
-        $property1 = new Property('foo', 1);
-        $property2 = new Property('bar', 2);
+        $property1 = Property::fromNameValue('foo', 1);
+        $property2 = Property::fromNameValue('bar', 2);
 
-        $properties = Properties::fromKeyValue([
+        $properties = Properties::fromArray([
             'foo' => $property1,
             'bar' => $property2
         ]);

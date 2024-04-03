@@ -29,7 +29,7 @@ class DeclarationNodeTest extends AvroTestCase
         };
 
         $this->assertSame(0, $node->getComments()->size());
-        $node->setComments(Comments::fromKeyValue([Comment::fromString('foo'), Comment::fromString('bar')]));
+        $node->setComments(Comments::fromArray([Comment::fromString('foo'), Comment::fromString('bar')]));
         $this->assertSame(2, $node->getComments()->size());
 
         $test = function (Comment $comment, int $i): void {

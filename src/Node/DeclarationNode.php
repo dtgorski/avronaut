@@ -18,7 +18,7 @@ abstract class DeclarationNode extends AstNode
     public function __construct(?Properties $properties = null)
     {
         parent::__construct($properties);
-        $this->comments = Comments::fromKeyValue([]);
+        $this->comments = Comments::fromArray([]);
     }
 
     /** @return Comments */

@@ -22,7 +22,7 @@ class CommentsTest extends AvroTestCase
         $comment1 = Comment::fromString('foo');
         $comment2 = Comment::fromString('bar');
 
-        $comments = Comments::fromKeyValue([$comment1, $comment2]);
+        $comments = Comments::fromArray([$comment1, $comment2]);
 
         $this->assertSame(2, $comments->size());
         $this->assertEquals([$comment1, $comment2], $comments->asArray());

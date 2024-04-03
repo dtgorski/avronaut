@@ -20,7 +20,7 @@ class EntityMapTest extends AvroTestCase
         $this->assertTrue($map->isEmpty());
 
         $array = [1, 2, 3];
-        $map = BogusEntityMap::fromKeyValue($array);
+        $map = BogusEntityMap::fromArray($array);
 
         $this->assertEquals($array, $map->asArray());
         $this->assertEquals(3, $map->size());

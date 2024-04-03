@@ -151,7 +151,7 @@ abstract class HandlerAbstract implements NodeHandler
     {
         foreach ($properties as $property) {
             $this->write($this->indent(), '@', $this->guardKeyword($property->getName()));
-            $this->writeln('(', json_encode($property->getJson()), ')');
+            $this->writeln('(', json_encode($property->getValue()), ')');
         }
     }
 
@@ -159,7 +159,7 @@ abstract class HandlerAbstract implements NodeHandler
     {
         foreach ($properties as $property) {
             $this->write('@', $this->guardKeyword($property->getName()));
-            $this->write('(', json_encode($property->getJson()), ') ');
+            $this->write('(', json_encode($property->getValue()), ') ');
         }
     }
 

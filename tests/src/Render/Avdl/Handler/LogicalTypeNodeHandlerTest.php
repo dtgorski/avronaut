@@ -33,9 +33,9 @@ class LogicalTypeNodeHandlerTest extends AvroTestCase
 {
     public function testVisit(): void
     {
-        $prop = Properties::fromKeyValue([
-            'foo' => new Property('foo', 1),
-            'bar' => new Property('bar', "\33"),
+        $prop = Properties::fromArray([
+            'foo' => Property::fromNameValue('foo', 1),
+            'bar' => Property::fromNameValue('bar', "\33"),
         ]);
 
         $node = new LogicalTypeNode(LogicalType::DATE, $prop);

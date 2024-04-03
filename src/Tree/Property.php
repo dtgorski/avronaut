@@ -8,9 +8,15 @@ namespace Avronaut\Tree;
 
 class Property implements \JsonSerializable
 {
-    public function __construct(
+    /** @psalm-suppress UnsafeInstantiation */
+    public static function fromNameValue(string $name, mixed $value): static
+    {
+        return new static($name, $value);
+    }
+
+    protected function __construct(
         private readonly string $name,
-        private readonly mixed $json
+        private readonly mixed $value
     ) {
     }
 
@@ -19,13 +25,13 @@ class Property implements \JsonSerializable
         return $this->name;
     }
 
-    public function getJson(): mixed
+    public function getValue(): mixed
     {
-        return $this->json;
+        return $this->value;
     }
 
     public function jsonSerialize(): array
     {
-        return [$this->getName() => $this->getJson()];
+        return [$this->getName() => $this->getValue()];
     }
 }

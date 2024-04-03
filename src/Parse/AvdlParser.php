@@ -652,7 +652,7 @@ class AvdlParser extends JsonParser
         $json = json_decode(json_encode(parent::parseJson()));
 
         $this->consume(Token::RPAREN);
-        return new Property($name, $json);
+        return Property::fromNameValue($name, $json);
     }
 
     /**
@@ -672,7 +672,7 @@ class AvdlParser extends JsonParser
                 $properties[$property->getName()] = $property;
             }
         }
-        return Properties::fromKeyValue($properties);
+        return Properties::fromArray($properties);
     }
 
     /**
@@ -695,8 +695,8 @@ class AvdlParser extends JsonParser
                 $properties[$property->getName()] = $property;
                 continue;
             }
-            if (is_string($property->getJson())) {
-                $namespace = (string) $property->getJson();
+            if (is_string($property->getValue())) {
+                $namespace = (string) $property->getValue();
                 continue;
             }
             $this->throwUnexpectedTokenWithHint(
@@ -705,7 +705,7 @@ class AvdlParser extends JsonParser
             );
         }
         return new PropertiesWithNamespace(
-            Properties::fromKeyValue($properties),
+            Properties::fromArray($properties),
             AvroNamespace::fromString($namespace)
         );
     }
@@ -785,7 +785,7 @@ class AvdlParser extends JsonParser
     /** @return Comments */
     private function drainCommentStack(): Comments
     {
-        return Comments::fromKeyValue($this->getCursor()->getCommentStack()->drain());
+        return Comments::fromArray($this->getCursor()->getCommentStack()->drain());
     }
 
     // @formatter:off

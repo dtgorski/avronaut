@@ -20,7 +20,7 @@ class EntityMap implements \IteratorAggregate
     }
 
     /** @psalm-suppress UnsafeInstantiation */
-    public static function fromKeyValue(array $elements): static
+    public static function fromArray(array $elements): static
     {
         return new static($elements);
     }
